@@ -1769,6 +1769,13 @@ parse_listitem(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t s
 
 		in_empty = 0;
 
+        /* If there is a line with no indentation that isn't empty, it's not
+         * part of the list item. */
+        if (end > beg && !in_empty && pre == 0) {
+            *flags |= MKD_LI_END;
+            break;
+        }
+
         /* source map */
         if (map) {
             size_t line_cur = src_map_location(map, beg + i);
