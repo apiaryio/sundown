@@ -3,11 +3,11 @@ cmake_minimum_required(VERSION 3.4 FATAL_ERROR)
 project(sundown-apiary VERSION 1.0 LANGUAGES C)
 
 add_library(sundown-apiary
-        src/autolink.c
-        src/buffer.c
-        src/markdown.c
-        src/src_map.c
-        src/stack.c
+    src/autolink.c
+    src/buffer.c
+    src/markdown.c
+    src/src_map.c
+    src/stack.c
     )
 
 target_include_directories(sundown-apiary PUBLIC
@@ -19,8 +19,6 @@ target_include_directories(sundown-apiary PUBLIC
 install(TARGETS sundown-apiary EXPORT sundown-apiary-targets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
-    INCLUDES DESTINATION include
     INCLUDES DESTINATION src
     )
 
