@@ -19,6 +19,8 @@ target_include_directories(sundown-apiary PUBLIC
 install(TARGETS sundown-apiary EXPORT sundown-apiary-targets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
+    INCLUDES DESTINATION include
     INCLUDES DESTINATION src
     )
 
@@ -33,7 +35,9 @@ write_basic_package_version_file("sundown-apiary-config-version.cmake"
     VERSION ${sundown-apiary_VERSION}
     COMPATIBILITY SameMajorVersion
     )
-install(FILES "sundown-apiary-config.cmake" "sundown-apiary-config-version.cmake"
+install(FILES
+    "sundown-apiary-config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/sundown-apiary-config-version.cmake"
     DESTINATION lib/cmake/sundown-apiary
     )
 
