@@ -14,18 +14,13 @@ add_library(sundown-obj OBJECT ${Sundown_SOURCES})
 add_library(sundown STATIC $<TARGET_OBJECTS:sundown-obj>)
 set_property(TARGET sundown-obj PROPERTY POSITION_INDEPENDENT_CODE 1)
 
-target_include_directories(sundown-obj PUBLIC
+target_include_directories(sundown PUBLIC
     $<BUILD_INTERFACE:${Sundown_BINARY_DIR}/src>
     $<BUILD_INTERFACE:${Sundown_SOURCE_DIR}/src>
     $<INSTALL_INTERFACE:src>
     )
 
-target_link_libraries(sundown
-    PUBLIC
-    sundown-obj
-    )
-
-install(TARGETS sundown-obj sundown EXPORT sundown-targets
+install(TARGETS sundown EXPORT sundown-targets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     RUNTIME DESTINATION bin
